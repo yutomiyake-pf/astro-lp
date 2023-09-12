@@ -114,8 +114,9 @@ const headerNavLinks2 = [
     max-width: $siteWidth;
     margin: 0 auto;
     border-bottom: 1px solid #c3c3c3;
-    // @media screen and (min-width: $breakPoint) {
-    // }
+    @media screen and (max-width: $breakPoint) {
+      border: none;
+    }
 
     &__content {
       max-width: $contentWidth;
@@ -137,6 +138,10 @@ const headerNavLinks2 = [
       margin: 36px 0 26px 0;
       display: flex;
       justify-content: space-between;
+      @media screen and (max-width: $breakPoint) {
+        justify-content: center;
+        margin: 26px 0 16px 0;
+      }
     }
 
     &__navLists {
