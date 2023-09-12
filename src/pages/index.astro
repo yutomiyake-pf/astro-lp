@@ -1,5 +1,46 @@
 ---
+import { Image } from "astro:assets";
+import MainLogoImage from "../assets/images/logo.svg";
 
+// ヘッダーリンク1
+const headerNavLinks1 = [
+  {
+    text: "All",
+    href: "#",
+  },
+  {
+    text: "New",
+    href: "#",
+  },
+  {
+    text: "Vintage",
+    href: "#",
+  },
+  {
+    text: "Category",
+    href: "#",
+  },
+  {
+    text: "LookBook",
+    href: "#",
+  },
+  {
+    text: "Blog",
+    href: "#",
+  },
+];
+
+// ヘッダーリンク2
+const headerNavLinks2 = [
+  {
+    text: "Login",
+    href: "#",
+  },
+  {
+    text: "Contact",
+    href: "#",
+  },
+];
 ---
 
 <html lang="ja">
@@ -17,10 +58,49 @@
       rel="stylesheet"
     />
 
+    <link rel="stylesheet" href="/styles/reset.css" />
+    <link rel="stylesheet" href="/styles/foundation.css" />
+
     <title>Astro練習</title>
   </head>
   <body>
-    <h1>Astro</h1>
+    <header class="header">
+      <div class="header__content">
+        <h1 class="header__title">
+          <Image
+            class="header__logo"
+            src={MainLogoImage}
+            alt="TOTAL"
+            height={19}
+            width={109}
+          />
+        </h1>
+        <nav class="header__nav">
+          <ul class="header__navLists">
+            {
+              headerNavLinks1.map((link) => (
+                <li class="header__navList">
+                  <a class="header__navLink" href={link.href}>
+                    {link.text}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+          <ul class="header__navLists">
+            {
+              headerNavLinks2.map((link) => (
+                <li class="header__navList">
+                  <a class="header__navLink" href={link.href}>
+                    {link.text}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </nav>
+      </div>
+    </header>
   </body>
 </html>
 
@@ -29,7 +109,45 @@
   $siteWidth: 1000px;
   $contentWidth: 800px;
 
-  body {
-    font-family: "Raleway", sans-serif;
+  .header {
+    padding: 0 20px;
+    max-width: $siteWidth;
+    margin: 0 auto;
+    border-bottom: 1px solid #c3c3c3;
+    // @media screen and (min-width: $breakPoint) {
+    // }
+
+    &__content {
+      max-width: $contentWidth;
+      margin: 0 auto;
+    }
+
+    &__title {
+      margin-top: 46px;
+    }
+
+    &__logo {
+      margin: 0 auto;
+      display: block;
+      width: 109px;
+      height: 19px;
+    }
+
+    &__nav {
+      margin: 36px 0 26px 0;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &__navLists {
+      display: flex;
+      gap: 14px;
+    }
+
+    &__navLink {
+      font-size: 12px;
+      line-height: 1.2;
+      color: #333333;
+    }
   }
 </style>
